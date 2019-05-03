@@ -47,6 +47,10 @@
                         {
                             "xml": "<feature name=\"FileTransfer\"><param name=\"android-package\" value=\"org.apache.cordova.filetransfer.FileTransfer\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Geolocation\"><param name=\"android-package\" value=\"org.apache.cordova.geolocation.Geolocation\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -72,11 +76,11 @@
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />",
-                            "count": 1
+                            "count": 2
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />",
-                            "count": 1
+                            "count": 2
                         }
                     ]
                 }
@@ -112,6 +116,9 @@
             "PACKAGE_NAME": "com.mql.gl"
         },
         "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.mql.gl"
+        },
+        "cordova-plugin-geolocation": {
             "PACKAGE_NAME": "com.mql.gl"
         }
     },
@@ -481,6 +488,20 @@
             "clobbers": [
                 "window.FileTransfer"
             ]
+        },
+        {
+            "id": "cordova-plugin-geolocation.geolocation",
+            "file": "plugins/cordova-plugin-geolocation/www/android/geolocation.js",
+            "pluginId": "cordova-plugin-geolocation",
+            "clobbers": [
+                "navigator.geolocation"
+            ]
+        },
+        {
+            "id": "cordova-plugin-geolocation.PositionError",
+            "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
+            "pluginId": "cordova-plugin-geolocation",
+            "runs": true
         }
     ],
     "plugin_metadata": {
@@ -493,6 +514,7 @@
         "cordova-plugin-device-orientation": "1.0.7",
         "cordova-plugin-dialogs": "1.2.1",
         "cordova-plugin-file": "6.0.1",
-        "cordova-plugin-file-transfer": "1.5.1"
+        "cordova-plugin-file-transfer": "1.5.1",
+        "cordova-plugin-geolocation": "2.1.0"
     }
 }

@@ -34,8 +34,10 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-		document.getElementById("cameraTakePicture").addEventListener 
-        ("click", cameraTakePicture);
+
+    document.getElementById("createContact").addEventListener("click", createContact);
+    document.getElementById("findContact").addEventListener("click", findContact);
+    document.getElementById("deleteContact").addEventListener("click", deleteContact);
 		
 		
     },
@@ -50,20 +52,44 @@ var app = {
 
         console.log('Received Event: ' + id);
     }
+
+function createContact() {
+   var myContact = navigator.contacts.create({"displayName": "Test User"});
+   myContact.save(contactSuccess, contactError);
+    
+   function contactSuccess() {
+      alert("Contact is saved!");
+   }
+	
+   function contactError(message) {
+      alert('Failed because: ' + message);
+   }
+	
+}
+
+
+ function findContacts() {
+   var options = new ContactFindOptions();
+   options.filter = "";
+   options.multiple = true;
+   fields = ["displayName"];
+   navigator.contacts.find(fields, contactfindSuccess, contactfindError, options);
+    
+   function contactfindSuccess(contacts) {
+      for (var i = 0; i < contacts.length; i++) {
+         alert("Display Name = " + contacts[i].displayName);
+      }
+   }
+	
+   function contactfindError(message) {
+      alert('Failed because: ' + message);
+   }
+	
+  }
+
+
+
 };
 
-function cameraTakePicture() { 
-   navigator.camera.getPicture(onSuccess, onFail, {  
-      quality: 50, 
-      destinationType: Camera.DestinationType.DATA_URL 
-   });  
-   
-   function onSuccess(imageData) { 
-      var image = document.getElementById('myImage'); 
-      image.src = "data:image/jpeg;base64," + imageData; 
-   }  
-   
-   function onFail(message) { 
-      alert('Failed because: ' + message); 
-   } 
-}
+ 
+

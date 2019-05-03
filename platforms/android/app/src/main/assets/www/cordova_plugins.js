@@ -364,6 +364,20 @@ module.exports = [
     "clobbers": [
       "window.FileTransfer"
     ]
+  },
+  {
+    "id": "cordova-plugin-geolocation.geolocation",
+    "file": "plugins/cordova-plugin-geolocation/www/android/geolocation.js",
+    "pluginId": "cordova-plugin-geolocation",
+    "clobbers": [
+      "navigator.geolocation"
+    ]
+  },
+  {
+    "id": "cordova-plugin-geolocation.PositionError",
+    "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
+    "pluginId": "cordova-plugin-geolocation",
+    "runs": true
   }
 ];
 module.exports.metadata = 
@@ -378,7 +392,8 @@ module.exports.metadata =
   "cordova-plugin-device-orientation": "1.0.7",
   "cordova-plugin-dialogs": "1.2.1",
   "cordova-plugin-file": "6.0.1",
-  "cordova-plugin-file-transfer": "1.5.1"
+  "cordova-plugin-file-transfer": "1.5.1",
+  "cordova-plugin-geolocation": "2.1.0"
 };
 // BOTTOM OF METADATA
 });
